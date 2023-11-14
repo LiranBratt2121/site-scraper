@@ -26,14 +26,17 @@ def save_to_file(content, filename):
     except:
         print('Got DIR')
 
-    with open(f'files/{filename}', 'w', encoding="utf8") as file:
+    with open(f'files/{filename}.txt', 'w', encoding="utf8") as file:
         file.write(content)
         
     print('File Saved')
         
         
 def fix_hebrew(paragraphs):
-    return str([p.text for p in paragraphs])    
+    text_list = [p.text.strip() for p in paragraphs if p.text.strip()]
+    
+    return '\n'.join(text_list)
+
 
 def grab_text(content):
     return fix_hebrew(content)
