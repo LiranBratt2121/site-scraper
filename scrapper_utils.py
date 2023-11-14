@@ -17,6 +17,24 @@ def download_img(url: str, name: str) -> None:
     urllib.request.urlretrieve(url, f'img/{name}.jpg')
     
     print('Image Downloaded')
-            
-def grab_text():
-    pass
+
+
+def save_to_file(content, filename):
+    try:
+        os.mkdir('files')
+        print('Created files directory')
+    except:
+        print('Got DIR')
+
+    with open(f'files/{filename}', 'w', encoding="utf8") as file:
+        file.write(content)
+        
+    print('File Saved')
+        
+        
+def fix_hebrew(paragraphs):
+    return str([p.text for p in paragraphs])    
+
+def grab_text(content):
+    return fix_hebrew(content)
+
